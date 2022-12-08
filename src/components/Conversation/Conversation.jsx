@@ -88,10 +88,9 @@ export default function Conversation({ currentUserId, chat, online, user }) {
         }}
       >
         {/* notification goes here */}
-        <Badge color="primary" variant="dot"></Badge>
-      </Grid>
-      <Grid item xs={1}>
-        {unreadMessages === 0 ? "" : <strong>{unreadMessages}</strong>}
+
+        {unreadMessages === 0 ? "" : <div style={{border: 
+        "1px solid black"}}><strong>{unreadMessages}</strong></div>}
       </Grid>
     </Grid>
   );

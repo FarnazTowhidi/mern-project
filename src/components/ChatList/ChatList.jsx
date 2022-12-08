@@ -147,41 +147,15 @@ export default function ChatList({ user }) {
     <>
       <Grid container spacing={2}>
         <Grid item xs={4}>
-          <TextField
-            sx={{ width: "25vw", border: "3px solid #2f15d1", margin: "10px" }}
-            className="outlined-basic"
-            type="text"
-            placeholder="Search for a User"
-          ></TextField>
-
-          {/* below needs to be populated in select drop down below */}
-          {allUsers.map((friend, idx) => (
-            <div key={idx} onClick={() => startChat(friend._id)}>
-              <br />
-              <div>
-                {friend?.firstname} {friend?.lastname}
-              </div>
-            </div>
-          ))}
-          {/* bottom of note */}
-
           <p className="section-heading">Find a Friend to Start Conversation</p>
           <FormControl
             fullWidth
             sx={{ border: "3px solid blue", borderRadius: "50px" }}
           >
-            <InputLabel id="demo-simple-select-label">Find Friends</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              // below is for user
-              value=""
-              label="Age"
-              // below is for setting action.
-              // onChange=""
-            >
+            <InputLabel sx={{border: "none"}}  >Find Friends</InputLabel>
+            <Select>
               <MenuItem value={""}>
-                <TextField
+                {/* <TextField
                   sx={{
                     width: "25vw",
                     border: "3px solid #2f15d1",
@@ -190,10 +164,13 @@ export default function ChatList({ user }) {
                   className="outlined-basic"
                   type="text"
                   placeholder="Search for a User"
-                ></TextField>
+                ></TextField> */}
               </MenuItem>
-              <MenuItem value={""}></MenuItem>
-              <MenuItem value={""}></MenuItem>
+              {allUsers.map((friend, idx) => (
+                <MenuItem key={idx} onClick={() => startChat(friend._id)}>
+                  {friend?.firstname} {friend?.lastname}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
           <p>Click a Chat to Start Conversation</p>
