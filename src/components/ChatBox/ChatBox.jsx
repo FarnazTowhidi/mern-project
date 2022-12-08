@@ -17,12 +17,32 @@ export default function ChatBox({
 }) {
   const [userData, setUserData] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
+  const [receiverData, setreceiverData] = useState(null)
 
   // get receiver data
   useEffect(() => {
     const userId = currentChat?.members?.find((id) => id !== currentUserId);
     setUserData(userId);
   }, [currentChat, currentUserId]);
+
+  // get receiver profile
+  useEffect(() => { 
+    const getreceiver = async() => {
+      try {
+        const userId = currentChat?.members?.find((id) => id !== currentUserId);
+        let payload = await axios.get (`api/users/${userId}`)
+        if (!payload.status === 200) throw new Error("No response received");
+        setreceiverData(payload.data);
+        console.log (payload.data)
+      }
+      catch (error) {
+      console.log(error);
+      }
+    }
+    getreceiver();
+  },[currentChat])
+
+
 
   //handle functions
   function handleChange(inputText) {
@@ -70,6 +90,7 @@ export default function ChatBox({
           <ChatMemberModal
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
+            receiverData={receiverData}
           />
           <div>
             <hr />
