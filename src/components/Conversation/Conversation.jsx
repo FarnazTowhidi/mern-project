@@ -66,19 +66,32 @@ export default function Conversation({ currentUserId, chat, online, user }) {
       }
     >
       <Grid item xs={4}>
-        {online ? ( "online"
-         
+        {online ? (
+          <img
+            className="profileImg"
+            src={
+              userData?.profilePicture === ""
+                ? "./logo192.png"
+                : userData?.profilePicture
+            }
+            style={{border: "4px solid green"}}
+          />
         ) : (
-          
-          "offline"
-        )
-        }
+          <img
+            className="profileImg"
+            src={
+              userData?.profilePicture === ""
+                ? "./logo192.png"
+                : userData?.profilePicture
+            }
+          />
+        )}
       </Grid>
       <Grid item xs={4}>
         <span>
           {userData?.firstname}&nbsp;{userData?.lastname}
         </span>
-{/* message preview goes here */}
+        {/* message preview goes here */}
       </Grid>
       <Grid
         item
@@ -89,8 +102,13 @@ export default function Conversation({ currentUserId, chat, online, user }) {
       >
         {/* notification goes here */}
 
-        {unreadMessages === 0 ? "" : <div style={{border: 
-        "1px solid black"}}><strong>{unreadMessages}</strong></div>}
+        {unreadMessages === 0 ? (
+          ""
+        ) : (
+          <div style={{ border: "1px solid black" }}>
+            <strong>{unreadMessages}</strong>
+          </div>
+        )}
       </Grid>
     </Grid>
   );

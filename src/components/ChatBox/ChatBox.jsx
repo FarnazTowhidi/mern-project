@@ -81,7 +81,7 @@ export default function ChatBox({
       console.log(error);
     }
   }
-
+console.log(messages)
   return (
     <>
       {/* chatmembermodal here */}
@@ -98,20 +98,12 @@ export default function ChatBox({
               setModalOpened(true);
             }}
           >
-            <img 
-            className="profileImg" 
-            src={user?.profilePicture === "" ? "./logo192.png" : receiverData?.profilePicture} alt="profileimage"
-            style={{margin:"auto", height:"120px", width:"120px"}} />   
-
             <div style={{ border: "1px solid black" }}>Profile Pic</div>
-            <div style={{ border: "1px solid black" }}>{receiverData?.firstname}</div>
-
             Friend: {userData}
           </div>
           <ChatMemberModal
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
-            receiverData={receiverData}
           />
           <Messages
             messages={messages}
@@ -129,7 +121,6 @@ export default function ChatBox({
             justifyContent="center"
             sx={{ width: "50vw", justifyItems: "center", margin: "auto" }}
           >
-            
             <InputEmoji
               color="secondary"
               value={newMessage}

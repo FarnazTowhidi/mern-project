@@ -77,6 +77,7 @@ export default function ChatList({ user }) {
     const getChatMessages = async () => {
       try {
         let { data } = await axios.get(`${serverRoute}/${currentChat._id}`);
+        console.log("Current Chat Id: ", currentChat._id);
         setMessages(data);
       } catch (error) {
         console.log(error);
@@ -92,6 +93,7 @@ export default function ChatList({ user }) {
     const getAllUsers = async () => {
       try {
         let { data } = await axios.get(`api/users`);
+        console.log("Get All User: ", data);
         data = data.filter((users) => users._id != user._id);
         setAllUsers(data);
       } catch (error) {
@@ -122,8 +124,9 @@ export default function ChatList({ user }) {
 
   // set currentChat
   function setChat(chat) {
+    console.log(chat);
     setCurrentChat(chat);
-    updateMessageStatus(chat._id);
+    updateMessageStatus(chat);
   }
   // create function that calls back to setCurrentChat, pass it into Conversations
   function updateReadMessages(cb) {
@@ -136,9 +139,9 @@ export default function ChatList({ user }) {
   // their chatbox with the receiver
   // third, if sender clicks back into convo with receiver, then that will
   // clear the receiver's unread messages
-  const updateMessageStatus = async (chatId) => {
+  const updateMessageStatus = async (chat) => {
     try {
-      await axios.put(`api/messages/status/${chatId}`);
+      await axios.put(`api/messages/status/${chat._id}`);
     } catch (error) {
       console.log(error);
     }
@@ -153,7 +156,7 @@ export default function ChatList({ user }) {
             fullWidth
             sx={{ border: "3px solid blue", borderRadius: "50px" }}
           >
-            <InputLabel sx={{border: "none"}}  >Find Friends</InputLabel>
+            <InputLabel sx={{ border: "none" }}>Find Friends</InputLabel>
             <Select>
               <MenuItem value={""}>
                 {/* <TextField
@@ -181,13 +184,12 @@ export default function ChatList({ user }) {
               {chats.map((chat, idx) => (
                 <div
                   style={{
-                    // width:"25vw",
                     margin: "5px",
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                   key={idx}
-                  onClick={() => setCurrentChat(chat)}
+                  onClick={() => setChat(chat)}
                 >
                   <Conversation
                     currentUserId={user._id}
