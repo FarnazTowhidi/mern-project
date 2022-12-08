@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import Messages from "../Messages/Messages";
 import InputEmoji from "react-input-emoji";
 import axios from "axios";
-import { Button } from "@mui/material";
-import { Container } from "react-bootstrap";
+import { Button, IconButton } from "@mui/material";
+import { Stack } from "@mui/system";
 import SendIcon from "@mui/icons-material/Send";
 import ChatMemberModal from "../ChatMemberModal/ChatMemberModal";
+
+
 export default function ChatBox({
   currentChat,
   currentUserId,
@@ -18,30 +20,40 @@ export default function ChatBox({
 }) {
   const [userData, setUserData] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
-  const [receiverData, setreceiverData] = useState(null)
+  const [receiverData, setReceiverData] = useState(null)
+
+
+
+ 
 
   // get receiver data
   useEffect(() => {
     const userId = currentChat?.members?.find((id) => id !== currentUserId);
-    setUserData(userId);
+   
   }, [currentChat, currentUserId]);
+
 
   // get receiver profile
   useEffect(() => { 
     const getreceiver = async() => {
+      console.log ("Helloooo")
+      console.log (currentChat?.members)
       try {
         const userId = currentChat?.members?.find((id) => id !== currentUserId);
-        let payload = await axios.get (`api/users/${userId}`)
+        console.log ("User ID")
+        console.log(userId);
+        let payload = await axios.get(`api/users/${userId}`)
         if (!payload.status === 200) throw new Error("No response received");
-        setreceiverData(payload.data);
         console.log (payload.data)
+        await setReceiverData(payload.data);
+        console.log (receiverData)
       }
       catch (error) {
       console.log(error);
       }
     }
     getreceiver();
-  },[currentChat])
+  },[])
 
 
 
@@ -76,24 +88,31 @@ export default function ChatBox({
       {currentChat ? (
         <div>
           <hr />
-<div
-  style={{
-    border: "1px solid black",
-    display: "flex",
-    flexDirection: "row",
-  }}
-  onClick={() => {
-    setModalOpened(true);
-  }}
->
-  <div style={{ border: "1px solid black" }}>Profile Pic</div>
-  Friend: {userData}
-</div>
-<ChatMemberModal
-  modalOpened={modalOpened}
-  setModalOpened={setModalOpened}
+          <div
+            style={{
+              border: "1px solid black",
+              display: "flex",
+              flexDirection: "row",
+            }}
+            onClick={() => {
+              setModalOpened(true);
+            }}
+          >
+            <img 
+            className="profileImg" 
+            src={user?.profilePicture === "" ? "./logo192.png" : receiverData?.profilePicture} alt="profileimage"
+            style={{margin:"auto", height:"120px", width:"120px"}} />   
+
+            <div style={{ border: "1px solid black" }}>Profile Pic</div>
+            <div style={{ border: "1px solid black" }}>{receiverData?.firstname}</div>
+
+            Friend: {userData}
+          </div>
+          <ChatMemberModal
+            modalOpened={modalOpened}
+            setModalOpened={setModalOpened}
             receiverData={receiverData}
-/>
+          />
           <Messages
             messages={messages}
             setMessages={setMessages}

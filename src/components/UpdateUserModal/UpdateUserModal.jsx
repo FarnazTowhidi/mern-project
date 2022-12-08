@@ -22,7 +22,7 @@ export default function UpdateUserModal({ user, setUser, modalOpened, setModalOp
     about: user.about
   })
 
-       
+    console.log (user)   
 
   function handleChange(e) {     
     setFormData({...formData, [e.target.name]:e.target.value })  
@@ -45,7 +45,6 @@ export default function UpdateUserModal({ user, setUser, modalOpened, setModalOp
             "Content-type": "multipart/form-data",
           },
             }).then(res=>setUser({...user, profilePicture:`https://ga-chatterbox.s3.ca-central-1.amazonaws.com/${selectedFile.name}`} ))
-            // })
         }       
         const user = await update(formData)     
         setUser(user)

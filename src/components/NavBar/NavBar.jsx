@@ -12,12 +12,14 @@ import { Container } from "react-bootstrap";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import UpdateUserModal from "../../components/UpdateUserModal/UpdateUserModal";
 
-export default function NavBar(props, user, setUser) {
+export default function NavBar(props) {
   const [modalOpened, setModalOpened] = useState(false);
   function handleLogOut() {
     userService.logOut();
     props.setUser(null);
   }
+
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={4}>
@@ -69,11 +71,12 @@ export default function NavBar(props, user, setUser) {
                 <LogoutIcon color="primary"></LogoutIcon>
               </Link>
             </IconButton>
+            
             <UpdateUserModal
               modalOpened={modalOpened}
               setModalOpened={setModalOpened}
-              user={user}
-              setUser={setUser}
+              user={props.user}
+              setUser={props.setUser}
             />
             <br></br>
           </Stack>

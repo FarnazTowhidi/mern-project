@@ -20,6 +20,7 @@ export default function ChatList({ user }) {
   const [newMessage, setNewMessage] = useState("");
   const [allUsers, setAllUsers] = useState([]);
 
+
   //get chat
   useEffect(() => {
     const getUserChats = async () => {

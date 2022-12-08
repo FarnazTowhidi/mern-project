@@ -1,6 +1,12 @@
 # CHATTER BOX
 
-# USED TECHNOLOGIES
+# Team members
+1. Ralph Tungol
+2. Kendra Yoshizawa
+3. Tyler Ro
+4. Farnaz Towhidi
+
+# Used Technologies
 1. React
 2. Mongoose database
 3. socket io 
@@ -15,6 +21,8 @@
 npm install
 Upload F
 npm i aws-sdk
+
+# Next Steps 
 
 # References
 https://www.npmjs.com/package/react-upload-to-s3

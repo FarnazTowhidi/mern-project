@@ -1,9 +1,10 @@
 import React from "react";
 import { Modal, useMantineTheme } from "@mantine/core";
 
-export default function ChatMemberModal({ modalOpened, setModalOpened }) {
+export default function ChatMemberModal({ modalOpened, setModalOpened, receiverData }) {
   const theme = useMantineTheme();
-
+  console.log ({receiverData})
+  
   return (
     <Modal
       overlayColor={
