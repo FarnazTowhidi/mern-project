@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import Messages from "../Messages/Messages";
 import InputEmoji from "react-input-emoji";
 import axios from "axios";
-import { Button, IconButton } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Button } from "@mui/material";
+import { Container } from "react-bootstrap";
 import SendIcon from "@mui/icons-material/Send";
 import ChatMemberModal from "../ChatMemberModal/ChatMemberModal";
-
 export default function ChatBox({
   currentChat,
   currentUserId,
@@ -75,26 +74,6 @@ export default function ChatBox({
     <>
       {/* chatmembermodal here */}
       {currentChat ? (
-<<<<<<< HEAD
-        <>
-          <div
-            style={{
-              border: "1px solid black",
-              display: "flex",
-              flexDirection: "row",
-            }}
-            onClick={() => {
-              setModalOpened(true);
-            }}
-          >
-            <div style={{ border: "1px solid black" }}>Profile Pic</div>
-            Friend: {userData}
-          </div>
-          <ChatMemberModal
-            modalOpened={modalOpened}
-            setModalOpened={setModalOpened}
-            receiverData={receiverData}
-=======
         <div>
           <hr />
 <div
@@ -113,6 +92,7 @@ export default function ChatBox({
 <ChatMemberModal
   modalOpened={modalOpened}
   setModalOpened={setModalOpened}
+            receiverData={receiverData}
 />
           <Messages
             messages={messages}
@@ -121,7 +101,6 @@ export default function ChatBox({
             currentChat={currentChat}
             currentUserId={currentUserId}
             user={user}
->>>>>>> d55a33c6d3fd70de288d746f486a6c03bd88821a
           />
 
           <Stack
