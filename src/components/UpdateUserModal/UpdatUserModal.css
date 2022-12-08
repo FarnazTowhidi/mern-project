@@ -1,7 +1,62 @@
-.outlined-basic {
-  border-radius: 30px;
-  border: 2px solid  #2f15d1;
-  padding: 1vmin 3vmin;
+h1 {
+  color: #2f15d1;
+}
+
+.updateContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+
+.updateContainer > label {
+  color: red;
+}
+
+.infoInput {
+  border: 1px solid #1165eb;
+  border-radius: 20px;
+  width: 280px;
+  height: 46px;
+  color: #1165eb;
+  font-size: 14px;
+  text-align: center;
+  margin: 4px;
+}
+.profileImg {
+  border: 2px solid #1165eb;
+  border-radius: 50%;
+}
+
+.submitBtn {
+  border: 1px solid #1165eb;
+  border-radius: 20px;
+  background-color: #2f15d1;
+  width: 280px;
+  height: 46px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: "Select some files";
+  display: inline-block;
+  border: 1px solid #1165eb;
+  border-radius: 20px;
+  background-color: #2f15d1;
+  color: #ffffff;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  /* -webkit-user-select: none; */
+  font-size: 14px;
+}
+.custom-file-input:hover::before {
+  color: rgb(212, 215, 215);
 }
 
 .profileImg {

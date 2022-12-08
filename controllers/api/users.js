@@ -17,7 +17,6 @@ async function create(req, res) {
   }
 }
 
-
 async function login(req, res) {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -44,7 +43,7 @@ async function updateUser(req,res) {
     if (!user) throw new Error();   
     res.status(200).json(user)
   } catch (error) {
-    return res.status(400).json(error); 
+    return res.status(400).json(error);
   }
 }
 
@@ -65,20 +64,18 @@ if (req.files.file)
     }
 }
 
-function uploadFileOnS3(fileName, fileData){
+function uploadFileOnS3(fileName, fileData) {
   var params = {
     Key: fileName,
-    Body:  fileData.data,
+    Body: fileData.data,
   };
-  s3bucket.upload(params, async function (err, res) {        
-      if(err) {
-        console.log("Error in uploading file on s3 due to "+ err)
-      }
-      else {
-        console.log(res)       
-        console.log("File successfully uploaded.")
-        return await res
-      }
+  s3bucket.upload(params, function (err, res) {
+    if (err) {
+      console.log("Error in uploading file on s3 due to " + err);
+    } else {
+      console.log(res);
+      console.log("File successfully uploaded.");
+    }
   });
 }
 
@@ -117,7 +114,7 @@ function createJWT(user) {
 module.exports = {
   create,
   login,
-  update:updateUser,
+  update: updateUser,
   uploadPicture,
   checkToken,
   getUser,

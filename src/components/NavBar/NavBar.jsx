@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import * as userService from "../../utilities/UserRequests/users-service";
 import { AppBar, Grid, IconButton, Button } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
@@ -8,8 +9,11 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Container } from "react-bootstrap";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import UpdateUserModal from "../../components/UpdateUserModal/UpdateUserModal";
 
-export default function NavBar(props) {
+export default function NavBar(props, user, setUser) {
+  const [modalOpened, setModalOpened] = useState(false);
   function handleLogOut() {
     userService.logOut();
     props.setUser(null);
@@ -36,7 +40,7 @@ export default function NavBar(props) {
           <Stack
             direction="row"
             alignItems="center"
-            spacing={3}
+            spacing={2}
             justifyContent="center"
             sx={{
               width: "25vw",
@@ -46,8 +50,13 @@ export default function NavBar(props) {
             }}
           >
             <IconButton alignItems="center">
-              <Link color="secondary" to="/">
-                <PersonOutlineIcon color="primary">Home</PersonOutlineIcon>
+              <Link color="secondary" to="/profile">
+                <PersonOutlineIcon color="primary"></PersonOutlineIcon>
+              </Link>
+            </IconButton>
+            <IconButton>
+              <Link onClick={() => setModalOpened(true)}>
+                <SettingsOutlinedIcon color="primary"></SettingsOutlinedIcon>
               </Link>
             </IconButton>
             <IconButton>
@@ -60,6 +69,12 @@ export default function NavBar(props) {
                 <LogoutIcon color="primary"></LogoutIcon>
               </Link>
             </IconButton>
+            <UpdateUserModal
+              modalOpened={modalOpened}
+              setModalOpened={setModalOpened}
+              user={user}
+              setUser={setUser}
+            />
             <br></br>
           </Stack>
         </AppBar>

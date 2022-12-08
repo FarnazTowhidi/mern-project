@@ -4,8 +4,12 @@ import Messages from "../Messages/Messages";
 import axios from "axios";
 import { io } from "socket.io-client";
 import Conversation from "../Conversation/Conversation";
-import { Input, Grid, TextField, Box, Avatar } from "@mui/material";
+import { Input, Grid, TextField, Box, Avatar, Menu } from "@mui/material";
 import { Container, Stack } from "@mui/material";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 export default function ChatList({ user }) {
   const socket = useRef();
@@ -115,13 +119,13 @@ export default function ChatList({ user }) {
     return online ? true : false;
   }
 
-  // set currentChat 
+  // set currentChat
   function setChat(chat) {
     setCurrentChat(chat);
     updateMessageStatus(chat._id);
   }
   // create function that calls back to setCurrentChat, pass it into Conversations
-  function updateReadMessages(cb){
+  function updateReadMessages(cb) {
     // updateMessageStatus(chatId)
   }
   // separate setCurrentChat
@@ -138,12 +142,10 @@ export default function ChatList({ user }) {
       console.log(error);
     }
   };
-  
-  
+
   return (
     <>
       <Grid container spacing={2}>
-      
         <Grid item xs={4}>
           <TextField
             sx={{ width: "25vw", border: "3px solid #2f15d1", margin: "10px" }}
@@ -152,56 +154,73 @@ export default function ChatList({ user }) {
             placeholder="Search for a User"
           ></TextField>
 
-          <Stack direction="row">
-            {allUsers.map((friend, idx) => (
-              <div key={idx} onClick={() => startChat(friend._id)}>
-                <Avatar
+          {/* below needs to be populated in select drop down below */}
+          {allUsers.map((friend, idx) => (
+            <div key={idx} onClick={() => startChat(friend._id)}>
+              <br />
+              <div>
+                {friend?.firstname} {friend?.lastname}
+              </div>
+            </div>
+          ))}
+          {/* bottom of note */}
+
+          <p className="section-heading">Find a Friend to Start Conversation</p>
+          <FormControl
+            fullWidth
+            sx={{ border: "3px solid blue", borderRadius: "50px" }}
+          >
+            <InputLabel id="demo-simple-select-label">Find Friends</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              // below is for user
+              value=""
+              label="Age"
+              // below is for setting action.
+              // onChange=""
+            >
+              <MenuItem value={""}>
+                <TextField
                   sx={{
-                    margin: "auto",
-                    backgroundColor: "#A378FF",
+                    width: "25vw",
                     border: "3px solid #2f15d1",
+                    margin: "10px",
                   }}
-                ></Avatar>
-                <br />
-                <p
-                  style={{
-                    color: "#2f15d1",
-                    fontWeight: "bold",
-                    justifyContent: "center",
-                    width: "8vw",
-                  }}
-                >
-                  {friend?.firstname} {friend?.lastname}
-                </p>
-              </div>
-            ))}
-          </Stack>
-
+                  className="outlined-basic"
+                  type="text"
+                  placeholder="Search for a User"
+                ></TextField>
+              </MenuItem>
+              <MenuItem value={""}></MenuItem>
+              <MenuItem value={""}></MenuItem>
+            </Select>
+          </FormControl>
           <p>Click a Chat to Start Conversation</p>
-
-          <div>
-            Active Chats:
-            {chats.map((chat, idx) => (
-              <div
-                style={{
-                  border: "3px solid #2f15d1",
-                  borderRadius: "30px",
-                  margin: "5px",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-                key={idx}
-                onClick={() => setChat(chat)}
-              >
-                <Conversation
-                  currentUserId={user._id}
-                  chat={chat}
-                  online={isOnline(chat)}
-                  user={user}
-                />
-              </div>
-            ))}
-          </div>
+          <Box>
+            <div>
+              <p className="section-heading">Active Chats:</p>
+              {chats.map((chat, idx) => (
+                <div
+                  style={{
+                    // width:"25vw",
+                    margin: "5px",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                  key={idx}
+                  onClick={() => setCurrentChat(chat)}
+                >
+                  <Conversation
+                    currentUserId={user._id}
+                    chat={chat}
+                    online={isOnline(chat)}
+                    user={user}
+                  />
+                </div>
+              ))}
+            </div>
+          </Box>
         </Grid>
         <Grid
           item

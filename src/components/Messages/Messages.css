@@ -3,24 +3,36 @@
   flex-direction: column;
   height: 60vh;
   overflow-y: scroll;
-  justify-items: right;
+  /* justify-content: space-between; */
+}
+.message-data {
+  color: #1165eb;
+  width: 50vmin;
 }
 
 .message {
   text-align: left;
   background-color: #1165eb;
   border-radius: 25px;
-  max-width: 30vw;
   padding: 15px;
   color: white;
+  flex: none;
+  align-items: left;
+
+  /* max-width: 50px; */
+  /* justify-content: left; */
+  /* justify-items: left; */
 }
 
 .own {
   text-align: right;
+  justify-items: right;
+  align-items: right;
   background-color: #a378ff;
-}
-.message-data {
-  color: #1165eb;
+  align-content: right;
+
+  /* flex-basis: 40%; */
+  /* max-width: 50px; */
 }
 .sender-text {
   font-weight: bold;

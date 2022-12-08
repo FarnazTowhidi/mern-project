@@ -82,16 +82,8 @@ code {
 }
 
 .section-heading {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: var(--tan-1);
-  color: var(--text-dark);
-  border: 0.1vmin solid var(--tan-3);
-  border-radius: 1vmin;
-  padding: 0.6vmin;
-  text-align: center;
-  font-size: 2vmin;
+  color: #2f15d1;
+  font-weight: bold;
 }
 
 .form-container {
@@ -129,44 +121,6 @@ input {
   outline: none;
 }
 
-input:focus {
-  border-color: var(--orange);
-}
-
-/* button, a.button {
-  margin: 1vmin;
-  padding: 1vmin;
-  color: var(--white);
-  background-color: var(--orange);
-  font-size: 2vmin;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-  border: .1vmin solid var(--tan-2);
-  border-radius: .5vmin;
-  outline: none;
-  cursor: pointer;
-}
-
-button.btn-sm {
-  font-size: 1.5vmin;
-  padding: .6vmin .8vmin;
-}
-
-button.btn-xs {
-  font-size: 1vmin;
-  padding: .4vmin .5vmin;
-}
-
-button:disabled, form:invalid button[type="submit"] {
-  cursor: not-allowed;
-  background-color: var(--tan-4);
-}
-
-button[type="submit"] {
-  grid-column: span 2;
-  margin: 1vmin 0 0;
-} */
 .logo {
   color: #2f15d1;
   text-transform: uppercase;
