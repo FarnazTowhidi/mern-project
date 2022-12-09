@@ -10,8 +10,9 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import NavBar from "../NavBar/NavBar";
 
-export default function ChatList({ user }) {
+export default function ChatList({ user, setUser }) {
   const socket = useRef();
   const [chats, setChats] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -146,14 +147,30 @@ export default function ChatList({ user }) {
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid item xl={1}></Grid>
+        <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+          <div>
+            <NavBar user={user} setUser={setUser} />
+          </div>
           <p className="section-heading">Find a Friend to Start Conversation</p>
           <FormControl
             fullWidth
-            sx={{ border: "2px solid #2F15D1", borderRadius: "50px" }}
+            variant="standard"
+            sx={{
+              border: "3px solid blue",
+              borderRadius: "50px",
+              disableUnderline: "true",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+            }}
+            InputProps={{
+              disableUnderline: true,
+            }}
           >
-            <InputLabel sx={{ border: "none" }}>Find Friends</InputLabel>
-            <Select style= {{border: "1px solid #2F15D1", borderRadius: "50px"}}>
+            <InputLabel sx={{ border: "none", paddingLeft: "30px" }}>
+              Find Friends
+            </InputLabel>
+            <Select>
               <MenuItem value={""}>
                 {/* <TextField
                   sx={{
@@ -173,10 +190,10 @@ export default function ChatList({ user }) {
               ))}
             </Select>
           </FormControl>
-          <p>Click a Chat to Start Conversation</p>
           <Box>
             <div>
               <p className="section-heading">Active Chats:</p>
+              <p className="text-descriptive">Select a chat to begin!</p>
               {chats.map((chat, idx) => (
                 <div
                   style={{
@@ -200,9 +217,13 @@ export default function ChatList({ user }) {
         </Grid>
         <Grid
           item
-          xs={8}
+          xs={12}
+          sm={12}
+          md={8}
+          lg={6}
+          xl={6}
           sx={{
-            // justifyContent: "center",
+            justifyContent: "center",
             height: "50px",
           }}
         >
@@ -219,6 +240,7 @@ export default function ChatList({ user }) {
           />
           {/* </Container> */}
         </Grid>
+        <Grid item xl={1}></Grid>
       </Grid>
     </>
   );

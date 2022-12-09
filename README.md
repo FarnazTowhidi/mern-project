@@ -6,6 +6,7 @@
 3. socket io 
 4. Amazon Web Services (aws-sdk)
 
+# Screen shot
 # Steps to follow
 
 1. Create the AWS S3 bucket as mentioned here

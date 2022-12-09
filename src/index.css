@@ -133,3 +133,7 @@ input {
   margin:auto;
   font-weight: bold;
 }
+
+.space {
+  height: 80px;
+}

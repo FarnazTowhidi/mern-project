@@ -13,17 +13,19 @@
 .message {
   align-items: left;
   justify-items: left;
-  background-color: #1165eb;
+  background-color: #8576e5;
   border-radius: 25px;
-  border-bottom-left-radius: 0;
+  /* border-bottom-left-radius: 0; */
   padding: 15px;
   color: white;
-  max-width: 20vw;
+  /* max-width: 20vw; */
+  /* width: 100%; */
+  width: 70%;
   margin: 1vmin 2vmin;
 }
 
 .own {
-  background-color: #a378ff;
+  background-color: #aba1ed;
   text-align: right;
   justify-items: flex-end;
   align-items: flex-end;
@@ -31,8 +33,6 @@
   justify-self: flex-end;
   align-self: flex-end;
   border-radius: 25px;
-  border-bottom-right-radius: 0;
-
 }
 .sender-text {
   font-weight: bold;

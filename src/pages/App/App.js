@@ -43,9 +43,12 @@ function App() {
       <ThemeProvider theme={themeOptions}>
         {user ? (
           <>
-            <NavBar user={user} setUser={setUser} />
+            {/* <NavBar user={user} setUser={setUser} /> */}
             <Routes>
-              <Route path="/chats" element={<ChatPage user={user} />} />
+              <Route
+                path="/chats"
+                element={<ChatPage user={user} setUser={setUser} />}
+              />
               <Route
                 path="/profile"
                 element={<ProfilePage user={user} setUser={setUser} />}
