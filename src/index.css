@@ -82,8 +82,9 @@ code {
 }
 
 .section-heading {
-  color: #2f15d1;
+  color: #2F15D1;
   font-weight: bold;
+  text-transform:uppercase;
 }
 
 .form-container {

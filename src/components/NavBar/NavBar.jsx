@@ -22,9 +22,11 @@ export default function NavBar(props) {
     <Grid container spacing={2}>
       <Grid item xs={4}>
         <h1 className="logo">chatter[box]</h1>
-        <Container>
-          {props.user && <span>Welcome, {props.user?.firstname}!</span>}
-        </Container>
+        <img
+            className="profileImg"
+            src={props.user?.profilePicture === "" ? "./logo192.png" : props.user?.profilePicture} alt="profileimage"
+            style={{margin:"auto", height:"90px", width:"90px", borderRadius:"3px"}} />
+        <div className="section-heading">{props.user && <span>Welcome, {props.user?.firstname}! &nbsp;&nbsp;&nbsp;</span>}</div>
         <AppBar
           position="static"
           color="transparent"
