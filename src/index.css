@@ -126,3 +126,10 @@ input {
   color: #2f15d1;
   text-transform: uppercase;
 }
+
+.DeleteTitle {
+  text-transform: uppercase;
+  color: #e91d24;
+  margin:auto;
+  font-weight: bold;
+}

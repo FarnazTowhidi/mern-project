@@ -42,8 +42,19 @@ export default function DeleteMessageModal({
       opened={modalOpened}
       onClose={() => setModalOpened(false)}
     >
-      <p>Delete Message?</p>
+      <div className="container">
+        <div>
+          <span className="DeleteTitle" style={{verticalAlign: "middle"}}> 
+          <img 
+              src="https://ga-chatterbox.s3.ca-central-1.amazonaws.com/2234003.png"
+              style={{margin:"auto", height:"20px", width:"20px"}} /> &nbsp;
+              Delete Message</span>
+        </div>
+      
+      <p>Are you sure you want to delete this message?</p>
       <button onClick={() => handleDelete(messageId)}>Delete</button>
+      </div>
+     
     </Modal>
   );
 }
