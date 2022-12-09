@@ -20,10 +20,26 @@ export default function ChatBox({
 }) {
   const [userData, setUserData] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
+  const [receiverData, setReceiverData] = useState([]);
   const receiverId = currentChat?.members?.find((id) => id !== currentUserId);
+
+  useEffect(() => {
+    async function getReceiverData() {
+      try {
+        const rId = currentChat?.members?.find((id) => id !== currentUserId);
+        const payload = await axios.get(`api/users/${rId}`);
+        if (payload.status === 200) {
+          setReceiverData(payload.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getReceiverData();
+  }, [currentChat]);
+
   // get receiver data
   useEffect(() => {
-    console.log("receiveId", receiverId);
     setUserData(receiverId);
   }, [currentChat, currentUserId]);
 
@@ -32,7 +48,7 @@ export default function ChatBox({
     setNewMessage(inputText);
   }
   async function handleSend(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const messageInfo = {
       chatId: currentChat._id,
       senderId: currentUserId,
@@ -59,7 +75,6 @@ export default function ChatBox({
           <hr />
           <div
             style={{
-              border: "1px solid black",
               display: "flex",
               flexDirection: "row",
             }}
@@ -67,12 +82,14 @@ export default function ChatBox({
               setModalOpened(true);
             }}
           >
-            <div style={{ border: "1px solid black" }}>Profile Pic</div>
-            Friend: {userData}
+            <img className="profileImg" src={receiverData?.profilePicture} />
+            {receiverData?.firstname}
           </div>
+          <hr />
           <ChatMemberModal
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
+            receiverData={receiverData}
           />
           <div className="messages-container">
             <Messages
@@ -83,6 +100,7 @@ export default function ChatBox({
               currentUserId={currentUserId}
               user={user}
               receiverId={userData}
+              receiverData={receiverData}
             />
           </div>
 
@@ -93,18 +111,17 @@ export default function ChatBox({
             justifyContent="center"
             sx={{ width: "50vw", justifyItems: "center", margin: "auto" }}
           >
-            <form onSubmit={handleSend}>
               <InputEmoji
                 color="secondary"
                 value={newMessage}
                 onChange={handleChange}
+                cleanOnEnter
+                onEnter={handleSend}
+                placeholder="Type a message"
               />
-
-              <button type="submit">
-                <IconButton>SEND </IconButton>
-              </button>
-              <SendIcon color="secondary">Send</SendIcon>
-            </form>
+              <SendIcon id="sendmsg" color="secondary" onClick={handleSend}>
+                Send
+              </SendIcon>
           </Stack>
         </div>
       ) : (

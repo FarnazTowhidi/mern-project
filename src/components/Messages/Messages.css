@@ -15,9 +15,11 @@
   justify-items: left;
   background-color: #1165eb;
   border-radius: 25px;
+  border-bottom-left-radius: 0;
   padding: 15px;
   color: white;
   max-width: 20vw;
+  margin: 1vmin 2vmin;
 }
 
 .own {
@@ -28,7 +30,8 @@
   align-content: flex-end;
   justify-self: flex-end;
   align-self: flex-end;
-  margin-right: 0;
+  border-radius: 25px;
+  border-bottom-right-radius: 0;
 
 }
 .sender-text {

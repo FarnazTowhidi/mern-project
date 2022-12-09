@@ -1,7 +1,11 @@
 import React from "react";
 import { Modal, useMantineTheme } from "@mantine/core";
 
-export default function ChatMemberModal({ modalOpened, setModalOpened }) {
+export default function ChatMemberModal({
+  modalOpened,
+  setModalOpened,
+  receiverData,
+}) {
   const theme = useMantineTheme();
 
   return (
@@ -15,6 +19,20 @@ export default function ChatMemberModal({ modalOpened, setModalOpened }) {
       overlayBlur={3}
       opened={modalOpened}
       onClose={() => setModalOpened(false)}
-    ></Modal>
+    >
+      <div className="chatmember-modal">
+        <img className="profileImg" src={receiverData?.profilePicture} />
+        <br />
+        {receiverData?.firstname}
+        {receiverData?.lastname}
+        <br />
+        {receiverData?.username}
+        <br />
+        {receiverData?.email}
+        <br />
+        {receiverData?.about}
+        <br />
+      </div>
+    </Modal>
   );
 }

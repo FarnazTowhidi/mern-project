@@ -4,3 +4,7 @@
   flex-direction: column !important;
   /* margin: 2px; */
 }
+.receiver-data { 
+  height: 10vmin; 
+  width:10
+}

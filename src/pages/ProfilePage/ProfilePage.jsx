@@ -15,7 +15,7 @@ export default function ProfilePage({user,setUser}) {
           <div>{user?.lastname}</div>
           <div>{user?.email}</div>
           <div>{user?.profilePicture} PROFILE PICTURE HERE</div>
-          <div>{user?.bio} BIO HERE</div>
+          <div>{user?.about} BIO HERE</div>
         </Stack>
         <IconButton>
           <Link onClick={() => setModalOpened(true)}>
