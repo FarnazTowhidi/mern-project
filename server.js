@@ -41,8 +41,3 @@ app.get("/*", function (req, res) {
 });
 
 
-heroku create <optional preferred name of app>
-git remote -v
-git add -A
-git commit -m "Deploy to Heroku"
-git push heroku master
