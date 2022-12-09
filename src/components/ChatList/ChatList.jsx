@@ -150,10 +150,10 @@ export default function ChatList({ user }) {
           <p className="section-heading">Find a Friend to Start Conversation</p>
           <FormControl
             fullWidth
-            sx={{ border: "3px solid blue", borderRadius: "50px" }}
+            sx={{ border: "2px solid #2F15D1", borderRadius: "50px" }}
           >
             <InputLabel sx={{ border: "none" }}>Find Friends</InputLabel>
-            <Select>
+            <Select style= {{border: "1px solid #2F15D1", borderRadius: "50px"}}>
               <MenuItem value={""}>
                 {/* <TextField
                   sx={{
