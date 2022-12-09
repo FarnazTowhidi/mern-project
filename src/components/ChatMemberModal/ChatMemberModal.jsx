@@ -20,7 +20,6 @@ export default function ChatMemberModal({
       overlayBlur={3}
       opened={modalOpened}
       onClose={() => setModalOpened(false)}
-      sx={{borderRadius: "25px"}}
     >
       <div className="chatmember-modal">
         <div className="chatmember-img">
@@ -35,7 +34,9 @@ export default function ChatMemberModal({
         <div className="chatmember">
           <h2>{`${receiverData?.firstname} ${receiverData?.lastname}`}</h2>
         </div>
-        <div className="chatmember"><h3>@{receiverData?.username}</h3></div>
+        <div className="chatmember">
+          <h3>@{receiverData?.username}</h3>
+        </div>
         <div className="chatmember">{receiverData?.about}</div>
       </div>
     </Modal>

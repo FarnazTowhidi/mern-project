@@ -4,15 +4,18 @@
   flex-direction: column !important;
   border-top: 3px solid #2f15d1;
   border-bottom: 3px solid #2f15d1;
-
-  
+  border-radius: 25px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
-.chat-container { 
+
+.chat-container {
   margin-top: 7vmin;
   border: 3px solid #2f15d1;
   border-radius: 25px;
 }
-.chatmember-container { 
+
+.chatmember-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,20 +23,11 @@
   padding: 0 3vmin;
 }
 
-.chatmember-image { 
+.chatmember-image {
   align-items: flex-start;
 }
-.searchIcon { 
+.searchIcon {
   display: flex;
   align-items: center;
   font-size: 4vmin;
-
-}
-.receiver-data { 
-  height: 10vmin; 
-  width:10
-}
-
-.space {
-  height: 80px;
 }

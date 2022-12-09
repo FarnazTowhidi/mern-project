@@ -85,6 +85,7 @@ code {
   color: #2f15d1;
   font-weight: bold;
   text-transform: capitalize;
+  padding: 10px;
 }
 
 .form-container {
@@ -126,10 +127,27 @@ input {
   color: #2f15d1;
   text-transform: uppercase;
 }
-
 .DeleteTitle {
   text-transform: uppercase;
   color: #e91d24;
-  margin:auto;
+  margin: auto;
   font-weight: bold;
+}
+.text-descriptive {
+  color: #2f15d1;
+  font-style: italic;
+}
+.bio-text {
+  color: #2f15d1;
+  font-style: italic;
+}
+.text-secondary {
+  color: #2f15d1;
+  font-size: smaller;
+}
+.text-name {
+  font-size: x-large;
+  color: #2f15d1;
+  font-weight: bold;
+  padding: 20px;
 }

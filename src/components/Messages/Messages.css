@@ -13,12 +13,12 @@
 .message {
   align-items: left;
   justify-items: left;
-  background-color: #8576e5;
+  background-color: #1165eb;
   border-radius: 25px;
   border-bottom-left-radius: 0;
   padding: 15px;
   color: white;
-  width: 70%;
+  max-width: 25vw;
   margin: 1vmin 2vmin;
 }
 

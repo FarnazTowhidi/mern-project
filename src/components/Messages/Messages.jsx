@@ -2,9 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import DeleteMessageModal from "../DeleteMessageModal/DeleteMessageModal";
 import "./Messages.css";
 import Linkify from "react-linkify";
-import { Button, Container } from "@mui/material";
 import moment from "moment";
-
 
 export default function Messages({
   messages,
@@ -13,12 +11,11 @@ export default function Messages({
   currentChat,
   currentUserId,
   user,
-  receiverData
+  receiverData,
 }) {
   const scroll = useRef();
   const [modalOpened, setModalOpened] = useState(false);
   const [messageId, setMessageId] = useState(null);
-
 
   // scroll to last message
   useEffect(() => {

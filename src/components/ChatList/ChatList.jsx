@@ -1,16 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import ChatBox from "../ChatBox/ChatBox";
-import Messages from "../Messages/Messages";
 import axios from "axios";
 import { io } from "socket.io-client";
 import Conversation from "../Conversation/Conversation";
-import { Input, Grid, TextField, Box, Avatar, Menu } from "@mui/material";
-import { Container, Stack } from "@mui/material";
+import NavBar from "../NavBar/NavBar";
+import { Grid, Box } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import NavBar from "../NavBar/NavBar";
 
 export default function ChatList({ user, setUser }) {
   const socket = useRef();
@@ -44,7 +42,7 @@ export default function ChatList({ user, setUser }) {
   //update messages if receiver has sender's chat open
   useEffect(() => {
     socket.current.on("receive-message", (data) => {
-      if (data.chatId == currentChat?._id) {
+      if (data.chatId === currentChat?._id) {
         setMessages((messages) => [...messages, data]);
       }
     });
@@ -92,7 +90,7 @@ export default function ChatList({ user, setUser }) {
     const getAllUsers = async () => {
       try {
         let { data } = await axios.get(`api/users`);
-        data = data.filter((users) => users._id != user._id);
+        data = data.filter((users) => users._id !== user._id);
         setAllUsers(data);
       } catch (error) {
         console.log(error);
@@ -126,9 +124,9 @@ export default function ChatList({ user, setUser }) {
     updateMessageStatus(chat);
   }
   // create function that calls back to setCurrentChat, pass it into Conversations
-  function updateReadMessages(cb) {
+  // function updateReadMessages(cb) {
     // updateMessageStatus(chatId)
-  }
+  // }
   // separate setCurrentChat
   // update message readstatus to true
   // currently, if a new msg is sent, then unread msgs will show after refresh
@@ -162,19 +160,17 @@ export default function ChatList({ user, setUser }) {
               disableUnderline: "true",
               paddingLeft: "20px",
               paddingRight: "20px",
-              width:"70%",
+              width: "70%",
             }}
             InputProps={{
               disableUnderline: true,
             }}
           >
             <InputLabel sx={{ border: "none", paddingLeft: "30px" }}>
-              Find Friends
+              Find a friend...
             </InputLabel>
-            <Select style={{backgroundColor:"#ffffff"}}>
-              <MenuItem value={""}>
-               
-              </MenuItem>
+            <Select style={{ backgroundColor: "#ffffff" }}>
+              <MenuItem value={""}></MenuItem>
               {allUsers.map((friend, idx) => (
                 <MenuItem key={idx} onClick={() => startChat(friend._id)}>
                   {friend?.firstname} {friend?.lastname}
@@ -182,6 +178,7 @@ export default function ChatList({ user, setUser }) {
               ))}
             </Select>
           </FormControl>
+          <p>Click a Chat to Start Conversation</p>
           <Box>
             <div>
               <p className="section-heading">Active Chats:</p>
@@ -208,7 +205,7 @@ export default function ChatList({ user, setUser }) {
           </Box>
         </Grid>
         <Grid
-          item
+             item
           xs={12}
           sm={12}
           md={8}
@@ -219,7 +216,6 @@ export default function ChatList({ user, setUser }) {
             height: "50px",
           }}
         >
-          {/* <Container className="messages-container"> */}
           <ChatBox
             currentChat={currentChat}
             currentUserId={user._id}
@@ -230,7 +226,6 @@ export default function ChatList({ user, setUser }) {
             socket={socket}
             user={user}
           />
-          {/* </Container> */}
         </Grid>
         <Grid item xl={1}></Grid>
       </Grid>

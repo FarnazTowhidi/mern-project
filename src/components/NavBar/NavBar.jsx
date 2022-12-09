@@ -51,9 +51,9 @@ export default function NavBar(props) {
             justifyContent: "center",
             alignItems: "center",
             boxShadow: "0",
+            width: "100%",
           }}
         >
-          {" "}
           <br></br>
           <Stack
             direction="row"
@@ -61,10 +61,10 @@ export default function NavBar(props) {
             spacing={2}
             justifyContent="center"
             sx={{
-              width: "70%",
               border: "3px solid #2f15d1",
               margin: "10px",
               borderRadius: "30px",
+              width: "70%",
             }}
           >
             <IconButton alignItems="center">

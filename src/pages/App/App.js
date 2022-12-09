@@ -1,5 +1,5 @@
 //react toolkit
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 //utilities
 import { getUser } from "../../utilities/UserRequests/users-service";
@@ -8,8 +8,6 @@ import AuthPage from "../AuthPage/AuthPage";
 import CheckTokenPage from "../CheckTokenPage/CheckTokenPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import ChatPage from "../ChatPage/ChatPage";
-//components
-import NavBar from "../../components/NavBar/NavBar";
 //styles
 import "./App.css";
 import { ThemeProvider, createTheme } from "@mui/material";
@@ -29,10 +27,6 @@ export const themeOptions = createTheme({
       main: "#A378FF",
     },
   },
-  // navlinks: {
-  //   marginLeft: themeOptions.spacing(10),
-  //   display: "flex",
-  // },
 });
 
 function App() {
@@ -43,12 +37,8 @@ function App() {
       <ThemeProvider theme={themeOptions}>
         {user ? (
           <>
-            {/* <NavBar user={user} setUser={setUser} /> */}
             <Routes>
-              <Route
-                path="/chats"
-                element={<ChatPage user={user} setUser={setUser} />}
-              />
+              <Route path="/chats" element={<ChatPage user={user} />} />
               <Route
                 path="/profile"
                 element={<ProfilePage user={user} setUser={setUser} />}

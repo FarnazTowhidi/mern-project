@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import { signUp } from "../../utilities/UserRequests/users-service";
 import "./SignUpForm.css";
-// mui below
 import CssBaseline from "@mui/material/CssBaseline";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import { TextField, Input, Button, Link } from "@mui/material";
+import { Input, Button, Link } from "@mui/material";
 import { Container } from "@mui/system";
 
 export class SignUpForm extends Component {
   state = {
-    // add first name, last name
     firstname: "",
     lastname: "",
     username: "",
