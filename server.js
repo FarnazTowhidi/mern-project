@@ -39,3 +39,10 @@ require("./socket/socket").init(server);
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
+
+
+heroku create <optional preferred name of app>
+git remote -v
+git add -A
+git commit -m "Deploy to Heroku"
+git push heroku master
